@@ -23,15 +23,6 @@ class IRacingMonitor:
 
     def loop(self):
         self.ir.freeze_var_buffer_latest()
-        t = self.ir['SessionTime']
-        print('session time:', t)
-        car_setup = self.ir['CarSetup']
-        if car_setup:
-            car_setup_tick = self.ir.get_session_info_update_by_key('CarSetup')
-            if car_setup_tick != self.state.last_car_setup_tick:
-                self.state.last_car_setup_tick = car_setup_tick
-                print('car setup update count:', car_setup['UpdateCount'])
-        self.ir.cam_switch_pos(0, 1)
 
     def run(self):
         try:
